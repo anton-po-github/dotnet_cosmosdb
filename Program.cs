@@ -7,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
     services.AddSwaggerGen();
     services.AddControllers();
     services.AddSingleton<ICosmosService<Movie>>(DatabaseInitializer.Initialize<Movie>(builder.Configuration).GetAwaiter().GetResult());
+    services.AddSingleton<ICosmosService<Users>>(UsersDatabaseInitializer.Initialize<Users>(builder.Configuration).GetAwaiter().GetResult());
 }
 
 var app = builder.Build();

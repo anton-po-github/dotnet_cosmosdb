@@ -1,40 +1,40 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 
 [Route("api/[controller]")]
 [ApiController]
-public class MovieController : ControllerBase
+public class UsersController : ControllerBase
 {
-    readonly ICosmosService<Movie> _cosmos;
+    readonly ICosmosService<Users> _cosmos;
 
-    public MovieController(ICosmosService<Movie> cosmosDbService)
+    public UsersController(ICosmosService<Users> cosmosDbService)
     {
         _cosmos = cosmosDbService;
     }
 
     // GET: api/<Books>
     [HttpGet]
-    public async Task<IEnumerable<Movie>> Get()
+    public async Task<IEnumerable<Users>> Get()
     {
         return await _cosmos.GetItemsAsync("SELECT * FROM c");
     }
 
     // GET api/<Books>/ISBN/Partition
     [HttpGet("{id}/{partition}")]
-    public async Task<Movie> Get(string id, string partition = Utils.DEFAULT_PARTITION)
+    public async Task<Users> Get(string id, string partition = Utils.DEFAULT_PARTITION)
     {
         return await _cosmos.GetItemAsync(id, partition);
     }
 
     // POST api/<Books>
     [HttpPost]
-    public async Task<bool> Post([FromBody] Movie item)
+    public async Task<bool> Post([FromBody] Users item)
     {
         return await _cosmos.AddItemAsync(item);
     }
 
     // PUT api/<Books>/5
     [HttpPut("{id}")]
-    public async Task<bool> Put(string id, [FromBody] Movie item)
+    public async Task<bool> Put(string id, [FromBody] Users item)
     {
         return await _cosmos.UpdateItemAsync(id, item);
     }

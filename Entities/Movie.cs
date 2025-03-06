@@ -12,9 +12,6 @@ public class Movie
     [JsonPropertyName("director")]
     public string Director { get; set; }
 
-    //[JsonPropertyName("language")]
-    //public string Language { get; set; }
-
     [JsonPropertyName("posterUrl")]
     public string Link { get; set; }
 

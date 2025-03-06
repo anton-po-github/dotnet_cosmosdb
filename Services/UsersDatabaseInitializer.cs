@@ -1,10 +1,8 @@
-﻿using Microsoft.Azure.Cosmos;
+using Microsoft.Azure.Cosmos;
 
-public static class DatabaseInitializer
+public class UsersDatabaseInitializer
 {
-    /// <summary>
-    /// Creates a Cosmos database and a container with the specified partition key. 
-    /// </summary>
+
     public static async Task<CosmosService<T>> Initialize<T>(IConfiguration configuration)
     {
         var settings = configuration.GetSection("UsersCosmosDb").Get<CosmosSettings>();
@@ -21,4 +19,3 @@ public static class DatabaseInitializer
         return new CosmosService<T>(container, settings.PartitionName); ;
     }
 }
-
