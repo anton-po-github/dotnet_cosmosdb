@@ -7,7 +7,7 @@ public static class SeedData
 
         //var file = $"{Startup.PATH}/Statics/{typeof(T).Name}_SEED.json";
 
-        var file = File.ReadAllText("../../../DOT_NET/dotnet_cosmosdb_crud/Statics/Movie_SEED.json");
+        var file = File.ReadAllText("../../../DOT_NET/dotnet_cosmosdb/Statics/Movie_SEED.json");
 
         if (File.Exists(file))
         {

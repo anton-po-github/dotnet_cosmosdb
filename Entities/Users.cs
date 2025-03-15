@@ -14,6 +14,4 @@ public class Users
     public string UserName { get; set; }
 
     public string Partition { get; set; }
-
-    // public override string ToString() => $"{UserEmail}, {UserName}";
 }
