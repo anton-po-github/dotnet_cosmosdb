@@ -1,11 +1,13 @@
-using Microsoft.Azure.Cosmos;
+﻿using Microsoft.Azure.Cosmos;
 
-public class UsersDatabaseInitializer
+public static class MovieDBInit
 {
-
+    /// <summary>
+    /// Creates a Cosmos database and a container with the specified partition key. 
+    /// </summary>
     public static async Task<CosmosService<T>> Initialize<T>(IConfiguration configuration)
     {
-        var settings = configuration.GetSection("UsersCosmosDb").Get<CosmosSettings>();
+        var settings = configuration.GetSection("MovieCosmosDb").Get<CosmosSettings>();
         var containerId = typeof(T).Name;
 
         var client = new CosmosClient(settings.EndPoint, settings.Key);
@@ -19,3 +21,4 @@ public class UsersDatabaseInitializer
         return new CosmosService<T>(container, settings.PartitionName); ;
     }
 }
+
